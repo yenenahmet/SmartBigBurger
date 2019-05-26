@@ -11,6 +11,7 @@
 * Kotlin 
 * Http Cache
 * RecyclerView
+* AndroidX
 * DataClass Clean Parcelable
 * Material SearchView -> https://github.com/rudsonlive/searchliveo
 * ShimmerLayout -> https://github.com/team-supercharge/ShimmerLayout
