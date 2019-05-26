@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.yenen.ahmet.smartbigburger.viewmodel.ProductSummaryViewModel"/>
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:background="@color/colorPrimary"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                    android:layout_above="@+id/Payment"
+                    app:setAdapter="@{viewModel.getAdapter()}"
+                    android:background="@color/colorYellow"
+                    android:focusableInTouchMode="true"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="vertical"
+                    android:background="@color/colorYellow"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/Payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp">
+                <View
+                        android:background="@android:color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"></View>
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                    <androidx.appcompat.widget.AppCompatTextView
+                            android:textColor="@android:color/black"
+                            android:id="@+id/total"
+                            android:textStyle="bold"
+                            android:layout_margin="15dp"
+                            android:textSize="18sp"
+                            android:text="Total :"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:layout_alignParentEnd="true"
+                            android:layout_margin="15dp"
+                            android:textSize="18sp"
+                            android:text="@{viewModel.total}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/button"
+                            android:layout_margin="15dp"
+                            android:layout_alignParentBottom="true"
+                            android:text="proceed to payment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>
