@@ -10,6 +10,7 @@
 * Glide
 * Kotlin 
 * Http Cache
+* RecyclerView
 * DataClass Clean Parcelable
 * Material SearchView -> https://github.com/rudsonlive/searchliveo
 * ShimmerLayout -> https://github.com/team-supercharge/ShimmerLayout
