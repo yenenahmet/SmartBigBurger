@@ -3,7 +3,7 @@
  # Kullanılan Teknolojiler && Yapılar
  
 * MVVM
-* DataBinding - RecyclerView , CustomBindings
+* DataBinding 
 * LiveData
 * RxJava2
 * Retrofit2
