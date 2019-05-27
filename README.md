@@ -1,6 +1,6 @@
 # SmartBigBurger
 
- # Kullanılan Teknolojiler && Yapılar
+ # Used Technologies 
  
 * MVVM
 * DataBinding 
