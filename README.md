@@ -18,5 +18,5 @@
 * RecyclerViewInputAdapter -> https://medium.com/@ynnahmet/recyclerview-input-adapter-93fb3e55845b
 
 
-![]((https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085125_SmartBigBurger.jpg =250x250)
+![alt text]((https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085125_SmartBigBurger.jpg =250x250)
 
