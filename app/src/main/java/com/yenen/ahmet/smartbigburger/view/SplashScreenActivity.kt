@@ -2,6 +2,7 @@ package com.yenen.ahmet.smartbigburger.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.yenen.ahmet.smartbigburger.R
 import com.yenen.ahmet.smartbigburger.utility.ScreenUtil
@@ -14,6 +15,7 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         sleep()
+        Log.e("list=",ScreenUtil.closestToZero(ScreenUtil.list).toString())
     }
 
     private fun sleep() {
