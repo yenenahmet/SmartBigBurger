@@ -18,16 +18,15 @@
 * RecyclerViewInputAdapter -> https://medium.com/@ynnahmet/recyclerview-input-adapter-93fb3e55845b
 
 
-<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085125_SmartBigBurger.jpg" height="450" width="250">
+<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/a1.jpg" height="450" width="250">
 
 
-<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085137_SmartBigBurger.jpg" height="450" width="250">
+<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/a2.jpg" height="450" width="250">
 
-<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085200_SmartBigBurger.jpg" height="450" width="250">
+<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/a3.jpg" height="450" width="250">
 
-<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085210_SmartBigBurger.jpg" height="450" width="250">
+<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/a4.jpg" height="450" width="250">
 
 
-<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085216_SmartBigBurger.jpg" height="450" width="250">
+<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/a5.jpg" height="450" width="250">
 
-<img src="https://github.com/yenenahmet/SmartBigBurger/blob/master/app/src/main/res/drawable/Screenshot_20190527-085216_SmartBigBurger.jpg" height="450" width="250">
