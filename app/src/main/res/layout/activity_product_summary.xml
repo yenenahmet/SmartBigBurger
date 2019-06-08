@@ -13,6 +13,9 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -21,6 +24,11 @@
                 android:background="@color/colorPrimary"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            <br.com.liveo.searchliveo.SearchLiveo
+                    android:id="@+id/search_liveo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent">
             <androidx.recyclerview.widget.RecyclerView

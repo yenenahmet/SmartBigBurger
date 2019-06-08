@@ -16,6 +16,9 @@ class ProductSummaryViewModel :BaseViewModel(){
     fun init(binding: ActivityProductSummaryBinding, activity: ProductSummaryActivity){
         setViewDataBinding(binding)
         adapter = ProductSummaryAdapter(mutableListOf())
+        binding.searchLiveo.with(activity).searchDelay(700)
+            .hideKeyboardAfterSearch()
+            .minToSearch(0).build()
         binding.setLifecycleOwner(activity)
     }
 
@@ -24,6 +27,9 @@ class ProductSummaryViewModel :BaseViewModel(){
         return adapter
     }
 
+    fun filter(value:String){
+        adapter.setFilter("x1"+value)
+    }
     fun getLoadData(products : List<ProductModel>) : LiveData<List<ProductModel>> {
         if(items ==null){
             items = MutableLiveData()
@@ -36,6 +42,11 @@ class ProductSummaryViewModel :BaseViewModel(){
         val retVal =  items?.value?.map { it.totalPrice }?.sum()?.div(100)
         val valObject  = if(retVal==null) 0.0 else retVal
         return  valObject.toString()+ " ₺"
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        adapter.unBindFilterAdapter()
     }
 
 }

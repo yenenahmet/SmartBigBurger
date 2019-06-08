@@ -32,7 +32,7 @@ class MainViewModel : BaseViewModel() {
         binding.setLifecycleOwner(activity)
         binding.searchLiveo.with(activity).searchDelay(700)
             .hideKeyboardAfterSearch()
-            .minToSearch(0).build();
+            .minToSearch(0).build()
         service =ApiClient.createService(BurgerService::class.java,activity)
     }
 
@@ -78,7 +78,7 @@ class MainViewModel : BaseViewModel() {
     }
 
     fun filter(text: String) {
-        adapter.setFilter(text)
+        adapter.setFilter("x1"+text)
     }
 
     fun hideKeybord() {

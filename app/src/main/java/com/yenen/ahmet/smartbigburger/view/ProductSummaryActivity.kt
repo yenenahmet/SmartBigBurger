@@ -1,16 +1,19 @@
 package com.yenen.ahmet.smartbigburger.view
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import br.com.liveo.searchliveo.SearchLiveo
 import com.yenen.ahmet.smartbigburger.R
 import com.yenen.ahmet.smartbigburger.base.BaseActivity
 import com.yenen.ahmet.smartbigburger.databinding.ActivityProductSummaryBinding
 import com.yenen.ahmet.smartbigburger.model.ProductModel
 import com.yenen.ahmet.smartbigburger.viewmodel.ProductSummaryViewModel
 
-class ProductSummaryActivity : BaseActivity<ProductSummaryViewModel,ActivityProductSummaryBinding>(ProductSummaryViewModel::class.java) {
+class ProductSummaryActivity : BaseActivity<ProductSummaryViewModel,ActivityProductSummaryBinding>(ProductSummaryViewModel::class.java)
+    ,SearchLiveo.OnSearchListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +48,22 @@ class ProductSummaryActivity : BaseActivity<ProductSummaryViewModel,ActivityProd
             android.R.id.home ->{
                 finish()
             }
+            R.id.menu_search -> {
+                binding.searchLiveo.show();
+            }
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.product_summary_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun changedSearch(p0: CharSequence?) {
+        if (p0 != null) {
+            viewModel.filter(p0.toString())
+        }
+    }
+
 }

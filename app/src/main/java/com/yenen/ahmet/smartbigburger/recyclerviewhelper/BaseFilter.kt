@@ -10,7 +10,7 @@ abstract class BaseFilter<T> protected constructor(filterItems: List<T>) : Filte
         this.allItems = filterItems as MutableList<T>
     }
 
-    override protected fun performFiltering(constraint: CharSequence?): FilterResults {
+    override fun performFiltering(constraint: CharSequence?): FilterResults {
         synchronized(mLock) {
             val results = FilterResults()
             if (constraint != null && constraint.length > 2) {
@@ -36,7 +36,7 @@ abstract class BaseFilter<T> protected constructor(filterItems: List<T>) : Filte
         }
     }
 
-    override protected fun publishResults(constraint: CharSequence, results: FilterResults?) {
+    override fun publishResults(constraint: CharSequence, results: FilterResults?) {
         synchronized(mLock) {
             if (results != null && results.values != null) {
                 val arrayList: List<*> = results.values as List<*>
@@ -55,7 +55,7 @@ abstract class BaseFilter<T> protected constructor(filterItems: List<T>) : Filte
     }
 
 
-    protected fun isContainsLower(model: T, value: String, constLowerCase: String): T? {
+    fun isContainsLower(model: T, value: String, constLowerCase: String): T? {
         return if (value.toLowerCase().contains(constLowerCase)) {
             model
         } else null

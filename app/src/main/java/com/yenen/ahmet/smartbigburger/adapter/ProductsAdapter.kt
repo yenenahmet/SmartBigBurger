@@ -3,21 +3,15 @@ package com.yenen.ahmet.smartbigburger.adapter
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.recyclerview.widget.RecyclerView
 import com.yenen.ahmet.smartbigburger.databinding.ItemProductLayoutBinding
 import com.yenen.ahmet.smartbigburger.model.ProductModel
-import com.yenen.ahmet.smartbigburger.recyclerviewhelper.BaseFilter
 import com.yenen.ahmet.smartbigburger.recyclerviewhelper.RecyclerViewInputAdapter
 
 class ProductsAdapter
     constructor(items: MutableList<ProductModel>, activity: Activity, viewToken: RecyclerView) :
-    RecyclerViewInputAdapter<ProductModel, ProductsAdapter.ViewHolder>(items, activity, viewToken) , Filterable {
-
-    private var recylerViewFilter :RecyclerViewFilter? =null
-
+    RecyclerViewInputAdapter<ProductModel, ProductsAdapter.ViewHolder>(items, activity, viewToken){
 
     override fun onChange(position: Int, view: View, item: ProductModel) {
         val inputView: AppCompatEditText = view as AppCompatEditText
@@ -54,32 +48,11 @@ class ProductsAdapter
         }
     }
 
-
-    override fun getFilter(): Filter {
-        if(recylerViewFilter ==null){
-            recylerViewFilter =  RecyclerViewFilter(getItems())
+    override fun getRecyclerFilterItem(constLowerCase: String,value: ProductModel,controlParameter: String):ProductModel?{
+        when (controlParameter) {
+            "x1" -> return getFilterAdapter()?.isContainsLower(value, value.title, constLowerCase)
+            else -> return null
         }
-        return recylerViewFilter as RecyclerViewFilter
-    }
-
-    fun setFilter(filter: String?) {
-        if (filter != null)
-            getFilter().filter("x1$filter")
-    }
-
-    inner class RecyclerViewFilter internal constructor(filterItems: List<ProductModel>) : BaseFilter<ProductModel>(filterItems) {
-
-        override fun pubslishResults(results: List<*>) {
-            setItems(results as List<ProductModel>)
-        }
-
-        override fun getFilterItem( constLowerCase: String, value: ProductModel,controlParameter: String): ProductModel? {
-            when (controlParameter) {
-                "x1" -> return isContainsLower(value, value.title, constLowerCase)
-                else -> return null
-            }
-        }
-
     }
 
 

@@ -12,7 +12,7 @@ import java.util.*
 
 abstract class RecyclerViewInputAdapter<T, E : RecyclerView.ViewHolder>
 protected constructor(items: MutableList<T>, protected val activity: Activity, private val viewToken: RecyclerView) :
-    BaseRecyclerViewAdapter<T, E>(items), TextWatcher, View.OnFocusChangeListener {
+    BaseRecyclerViewFilterAdapter<T, E>(items), TextWatcher, View.OnFocusChangeListener {
 
     // Listener Variable //
     protected var textWatcher: TextWatcher? = null
@@ -20,7 +20,7 @@ protected constructor(items: MutableList<T>, protected val activity: Activity, p
     // Listener Variable //
 
     // Class Variable //
-    private val changeDelay: Long = 600
+    private val changeDelay: Long = 700
     private var timer: Timer? = null
     private var focusPosition: Int = -1
     private var focusView: View? = null
@@ -46,7 +46,7 @@ protected constructor(items: MutableList<T>, protected val activity: Activity, p
     }
 
     override fun afterTextChanged(s: Editable) {
-        if (!s.isEmpty()) {
+        if (!s.trim().isEmpty()) {
             clearTimer()
             timer = Timer()
             timer?.schedule(object : TimerTask() {
@@ -101,13 +101,13 @@ protected constructor(items: MutableList<T>, protected val activity: Activity, p
         inputManager.hideSoftInputFromWindow(viewToken.windowToken, 0)
     }
 
-    fun unBind() {
+     fun unBind() {
         focusChangeListener = null
         textWatcher = null
         clearTimer()
         timer = null
         focusView = null
-        clearItems()
+        unBindFilterAdapter()
     }
 
     private fun clearTimer() {
