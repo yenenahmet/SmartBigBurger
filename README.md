@@ -6,6 +6,7 @@
 * DataBinding 
 * LiveData
 * RxJava2
+* Dependency Injection -Dagger2
 * Retrofit2
 * Glide
 * Kotlin 
