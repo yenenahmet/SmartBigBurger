@@ -37,27 +37,22 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha05'
     //AndroidX
-
     //MVVM
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     //MVVM
-
     // Retrofit
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation('com.squareup.retrofit2:retrofit:2.5.0') { exclude module: 'okhttp' }
     //Retrofit
-
     //Rx
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     //Rx
-
     //Design
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     //Design
-
     //img Pro
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.8.0'
@@ -66,4 +61,12 @@ dependencies {
     // Extra Lib
     implementation 'com.github.rudsonlive:searchliveo:1.1.2'
     implementation 'io.supercharge:shimmerlayout:2.1.0'
+
+    // Dagger 2
+    implementation 'com.google.dagger:dagger:2.23.1'
+    kapt 'com.google.dagger:dagger-compiler:2.23.1'
+
+    implementation 'com.google.dagger:dagger-android:2.23.1'
+    kapt 'com.google.dagger:dagger-android-processor:2.23.1'
+    // Dagger 2
 }

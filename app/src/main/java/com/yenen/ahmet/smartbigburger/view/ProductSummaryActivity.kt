@@ -9,11 +9,18 @@ import br.com.liveo.searchliveo.SearchLiveo
 import com.yenen.ahmet.smartbigburger.R
 import com.yenen.ahmet.smartbigburger.base.BaseActivity
 import com.yenen.ahmet.smartbigburger.databinding.ActivityProductSummaryBinding
+import com.yenen.ahmet.smartbigburger.factory.AppViewModelFactory
 import com.yenen.ahmet.smartbigburger.model.ProductModel
 import com.yenen.ahmet.smartbigburger.viewmodel.ProductSummaryViewModel
+import dagger.android.AndroidInjection
 
 class ProductSummaryActivity : BaseActivity<ProductSummaryViewModel,ActivityProductSummaryBinding>(ProductSummaryViewModel::class.java)
     ,SearchLiveo.OnSearchListener{
+
+
+    override fun getFactory(): AppViewModelFactory? {
+        return null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -13,12 +13,13 @@ import com.yenen.ahmet.smartbigburger.view.MainActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
+import javax.inject.Inject
 
-class MainViewModel : BaseViewModel() {
+class MainViewModel @Inject constructor(private val burgerService: BurgerService)
+: BaseViewModel() {
 
     private lateinit var adapter: ProductsAdapter
     private var items: MutableLiveData<List<ProductModel>>? = null
-    private lateinit var service :BurgerService
 
     // View Refresh
     val handleMessage: MutableLiveData<String> = MutableLiveData()
@@ -33,7 +34,6 @@ class MainViewModel : BaseViewModel() {
         binding.searchLiveo.with(activity).searchDelay(700)
             .hideKeyboardAfterSearch()
             .minToSearch(0).build()
-        service =ApiClient.createService(BurgerService::class.java,activity)
     }
 
     // Class Fun //
@@ -47,7 +47,7 @@ class MainViewModel : BaseViewModel() {
 
     private fun loadData() {
         disposable.add(
-            service.getProducts()
+            burgerService.getProducts()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResults, this::handleError)

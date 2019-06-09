@@ -10,14 +10,25 @@ import br.com.liveo.searchliveo.SearchLiveo
 import com.yenen.ahmet.smartbigburger.R
 import com.yenen.ahmet.smartbigburger.base.BaseActivity
 import com.yenen.ahmet.smartbigburger.databinding.ActivityMainBinding
+import com.yenen.ahmet.smartbigburger.factory.AppViewModelFactory
 import com.yenen.ahmet.smartbigburger.model.ProductModel
 import com.yenen.ahmet.smartbigburger.viewmodel.MainViewModel
+import dagger.android.AndroidInjection
 import java.util.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewModel::class.java),
     SearchLiveo.OnSearchListener {
 
+    @Inject
+    lateinit var viewModelFactorty: AppViewModelFactory
+
+    override fun getFactory(): AppViewModelFactory? {
+       return viewModelFactorty
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setTitle("Big Burger")
