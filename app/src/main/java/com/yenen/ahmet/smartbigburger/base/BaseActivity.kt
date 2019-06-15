@@ -15,7 +15,9 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(viewModelClass
     @LayoutRes
     abstract fun getLayoutRes(): Int
 
-    protected val binding by lazy { DataBindingUtil.setContentView(this, getLayoutRes()) as DB }
+    protected val binding by lazy {
+        DataBindingUtil.setContentView(this, getLayoutRes()) as DB
+    }
 
     protected val viewModel by lazy {
         val viewModelFactory:AppViewModelFactory? = getFactory()

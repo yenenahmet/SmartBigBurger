@@ -16,7 +16,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(private val burgerService: BurgerService)
-: BaseViewModel() {
+: BaseViewModel<MainActivity>() {
 
     private lateinit var adapter: ProductsAdapter
     private var items: MutableLiveData<List<ProductModel>>? = null
@@ -28,9 +28,8 @@ class MainViewModel @Inject constructor(private val burgerService: BurgerService
     // View Refresh
 
     fun init(binding: ActivityMainBinding, activity: MainActivity) {
-        setViewDataBinding(binding)
+        setViewDataBinding(binding,activity)
         adapter = ProductsAdapter(mutableListOf(), activity, binding.recyclerView)
-        binding.setLifecycleOwner(activity)
         binding.searchLiveo.with(activity).searchDelay(700)
             .hideKeyboardAfterSearch()
             .minToSearch(0).build()

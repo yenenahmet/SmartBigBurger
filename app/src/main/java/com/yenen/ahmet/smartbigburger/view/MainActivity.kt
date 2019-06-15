@@ -23,10 +23,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
     @Inject
     lateinit var viewModelFactorty: AppViewModelFactory
 
-    override fun getFactory(): AppViewModelFactory? {
-       return viewModelFactorty
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -44,6 +40,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
         binding.viewModel = viewModel
         viewModel.init(binding, this)
     }
+
+    override fun getFactory(): AppViewModelFactory? {
+        return viewModelFactorty
+    }
+
     // BaseActivity MVVM //
 
     //Class Fun //

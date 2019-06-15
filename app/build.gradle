@@ -69,4 +69,7 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.23.1'
     kapt 'com.google.dagger:dagger-android-processor:2.23.1'
     // Dagger 2
+
+    implementation 'com.google.firebase:firebase-messaging:18.0.0'
 }
+apply plugin: 'com.google.gms.google-services'

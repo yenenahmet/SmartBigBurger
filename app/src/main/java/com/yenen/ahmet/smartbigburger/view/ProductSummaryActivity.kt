@@ -18,9 +18,7 @@ class ProductSummaryActivity : BaseActivity<ProductSummaryViewModel,ActivityProd
     ,SearchLiveo.OnSearchListener{
 
 
-    override fun getFactory(): AppViewModelFactory? {
-        return null
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +44,10 @@ class ProductSummaryActivity : BaseActivity<ProductSummaryViewModel,ActivityProd
     override fun initViewModel(viewModel: ProductSummaryViewModel) {
         binding.viewModel = viewModel
         viewModel.init(binding,this)
+    }
+
+    override fun getFactory(): AppViewModelFactory? {
+        return null
     }
     //  Base Activity //
 
