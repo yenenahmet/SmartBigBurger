@@ -14,6 +14,7 @@
 * RecyclerView
 * AndroidX
 * DataClass Clean Parcelable
+* FCM
 * Material SearchView -> https://github.com/rudsonlive/searchliveo
 * ShimmerLayout -> https://github.com/team-supercharge/ShimmerLayout
 * RecyclerViewInputAdapter -> https://medium.com/@ynnahmet/recyclerview-input-adapter-93fb3e55845b
