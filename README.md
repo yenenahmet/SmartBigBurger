@@ -1,5 +1,7 @@
 # SmartBigBurger
 
+https://medium.com/@ynnahmet/push-notification-nedir-e3aca10f8702
+
  # Used Technologies 
  
 * MVVM
