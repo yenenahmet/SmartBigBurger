@@ -39,6 +39,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
     override fun initViewModel(viewModel: MainViewModel) {
         binding.viewModel = viewModel
         viewModel.init(binding, this)
+        binding.lifecycleOwner =this
     }
 
     override fun getFactory(): AppViewModelFactory? {

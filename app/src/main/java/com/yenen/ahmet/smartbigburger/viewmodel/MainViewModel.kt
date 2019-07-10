@@ -4,19 +4,16 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yenen.ahmet.smartbigburger.adapter.ProductsAdapter
-import com.yenen.ahmet.smartbigburger.base.BaseViewModel
+import com.yenen.ahmet.smartbigburger.base.BaseRxSingleHandlerViewModel
 import com.yenen.ahmet.smartbigburger.databinding.ActivityMainBinding
 import com.yenen.ahmet.smartbigburger.model.ProductModel
 import com.yenen.ahmet.smartbigburger.remote.ApiClient
 import com.yenen.ahmet.smartbigburger.remote.BurgerService
 import com.yenen.ahmet.smartbigburger.view.MainActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import retrofit2.Response
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(private val burgerService: BurgerService)
-: BaseViewModel<MainActivity>() {
+: BaseRxSingleHandlerViewModel<List<ProductModel>>() {
 
     private lateinit var adapter: ProductsAdapter
     private var items: MutableLiveData<List<ProductModel>>? = null
@@ -28,35 +25,24 @@ class MainViewModel @Inject constructor(private val burgerService: BurgerService
     // View Refresh
 
     fun init(binding: ActivityMainBinding, activity: MainActivity) {
-        setViewDataBinding(binding,activity)
+        setViewDataBinding(binding)
         adapter = ProductsAdapter(mutableListOf(), activity, binding.recyclerView)
         binding.searchLiveo.with(activity).searchDelay(700)
             .hideKeyboardAfterSearch()
             .minToSearch(0).build()
     }
 
-    // Class Fun //
-    fun getData(): LiveData<List<ProductModel>> {
-        if (items == null) {
-            items = MutableLiveData()
-            loadData()
-        }
-        return items as LiveData<List<ProductModel>>
+
+    override fun handleError(t: Throwable) {
+        handleVisibility.value = View.GONE
+        handleVisibilityError.value = View.VISIBLE
+        handleMessage.value = ApiClient.failMessage(t)
     }
 
-    private fun loadData() {
-        disposable.add(
-            burgerService.getProducts()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(this::handleResults, this::handleError)
-        )
-    }
 
-    private fun handleResults(response: Response<List<ProductModel>>?) {
-        val body:List<ProductModel>? = response?.body()
-        if (body != null && body.size > 0) {
-            items?.value = body
+    override fun handleResults(results: List<ProductModel>?) {
+        if (results != null && results.size > 0) {
+            items?.value = results
             handleVisibility.value = View.VISIBLE
             handleVisibilityError.value = View.GONE
         } else {
@@ -66,11 +52,15 @@ class MainViewModel @Inject constructor(private val burgerService: BurgerService
         }
     }
 
-    private fun handleError(t: Throwable) {
-        handleVisibility.value = View.GONE
-        handleVisibilityError.value = View.VISIBLE
-        handleMessage.value = ApiClient.failMessage(t)
+    // Class Fun //
+    fun getData(): LiveData<List<ProductModel>> {
+        if (items == null) {
+            items = MutableLiveData()
+            runObservable(burgerService.getProducts())
+        }
+        return items as LiveData<List<ProductModel>>
     }
+
 
     fun getAdapter(): ProductsAdapter? {
         return adapter

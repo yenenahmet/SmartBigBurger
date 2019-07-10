@@ -8,13 +8,13 @@ import com.yenen.ahmet.smartbigburger.databinding.ActivityProductSummaryBinding
 import com.yenen.ahmet.smartbigburger.model.ProductModel
 import com.yenen.ahmet.smartbigburger.view.ProductSummaryActivity
 
-class ProductSummaryViewModel :BaseViewModel<ProductSummaryActivity>(){
+class ProductSummaryViewModel :BaseViewModel(){
 
     private lateinit var adapter :ProductSummaryAdapter
     private var items: MutableLiveData<List<ProductModel>>? = null
 
     fun init(binding: ActivityProductSummaryBinding, activity: ProductSummaryActivity){
-        setViewDataBinding(binding,activity)
+        setViewDataBinding(binding)
         adapter = ProductSummaryAdapter(mutableListOf())
         binding.searchLiveo.with(activity).searchDelay(700)
             .hideKeyboardAfterSearch()

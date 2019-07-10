@@ -16,7 +16,6 @@ import java.util.*
 
 class MyFirebaseMessagingService :FirebaseMessagingService() {
 
-
     private lateinit var notificationManager: NotificationManager
     private val ADMIN_CHANNEL_ID = "ynnAhmet"
 
@@ -26,7 +25,6 @@ class MyFirebaseMessagingService :FirebaseMessagingService() {
             Log.i("New Token",newToken)
             pushNewToken(newToken)
         }
-
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
@@ -73,5 +71,6 @@ class MyFirebaseMessagingService :FirebaseMessagingService() {
      // Token her yenilendiğind, kendi server'ınızda her kullanıcı için token'ı yenilemeniz gerekli
      // Telefonlarla bu token üzerinden iletişime geçiceksiniz !
     }
+
 
 }

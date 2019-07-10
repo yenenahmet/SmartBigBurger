@@ -25,7 +25,6 @@ class SmartBigBurgerApplication : DaggerApplication() {
     }
 
     private fun initView() {
-        //This method will use for fetching Token
         Thread(Runnable {
             try {
                 Log.i("FCM", FirebaseInstanceId.getInstance().getToken(getString(R.string.SENDER_ID),"FCM"))

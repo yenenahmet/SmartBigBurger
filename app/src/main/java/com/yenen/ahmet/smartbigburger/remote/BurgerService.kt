@@ -10,5 +10,5 @@ interface BurgerService {
 
     @Headers("Cache-Control: public, max-stale=3600")
     @GET("mobiletest1.json")
-    fun getProducts(): Observable<Response<List<ProductModel>>>
+    fun getProducts(): Observable<List<ProductModel>>
 }

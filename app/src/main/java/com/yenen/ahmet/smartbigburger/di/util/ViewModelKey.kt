@@ -1,4 +1,4 @@
-package com.yenen.ahmet.smartbigburger.di.util
+package csetupNotificationChannelsom.yenen.ahmet.smartbigburger.di.util
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
