@@ -29,6 +29,8 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setTitle("Big Burger")
         observeData()
+        // Crashh //
+       // throw IllegalArgumentException()
     }
 
     // BaseActivity MVVM //
