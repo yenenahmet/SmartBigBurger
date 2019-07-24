@@ -104,7 +104,7 @@ protected constructor(private var items: MutableList<T>) : RecyclerView.Adapter<
         return LayoutInflater.from(parent.context)
     }
 
-    protected fun clearItems() {
+    fun clearItems() {
         items.clear()
     }
     // Other Fun //
