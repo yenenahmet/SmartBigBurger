@@ -1,6 +1,5 @@
 package com.yenen.ahmet.smartbigburger.base
 
-import androidx.recyclerview.widget.RecyclerView
 import com.yenen.ahmet.smartbigburger.recyclerviewhelper.BaseRecyclerViewAdapter
 
 
