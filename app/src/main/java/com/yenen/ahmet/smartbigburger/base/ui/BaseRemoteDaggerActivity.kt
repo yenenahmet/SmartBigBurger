@@ -52,8 +52,8 @@ constructor(viewModelClass: Class<VM>) :
 
     @Suppress("UNCHECKED_CAST")
     protected fun runDataChangeable(){
-        runLoading()
         if (viewModel is BaseFullRxSingleHandlerViewModel<*>) {
+            runLoading()
             val castViewModel = viewModel as BaseFullRxSingleHandlerViewModel<T>
             castViewModel.dataChangeable()
         }

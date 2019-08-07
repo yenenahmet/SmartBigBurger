@@ -51,8 +51,8 @@ constructor(viewModelClass: Class<VM>) : BaseDaggerFragment<VM, DB>(viewModelCla
 
     @Suppress("UNCHECKED_CAST")
     protected fun runDataChangeable(){
-        runLoading()
         if (viewModel is BaseFullRxSingleHandlerViewModel<*>) {
+            runLoading()
             val castViewModel = viewModel as BaseFullRxSingleHandlerViewModel<T>
             castViewModel.dataChangeable()
         }
