@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import br.com.liveo.searchliveo.SearchLiveo
 import com.yenen.ahmet.smartbigburger.R
-import com.yenen.ahmet.smartbigburger.base.BaseActivity
+import com.yenen.ahmet.smartbigburger.base.ui.BaseActivity
 import com.yenen.ahmet.smartbigburger.databinding.ActivityMainBinding
 import com.yenen.ahmet.smartbigburger.factory.AppViewModelFactory
 import com.yenen.ahmet.smartbigburger.model.ProductModel

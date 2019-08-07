@@ -1,14 +1,14 @@
-package com.yenen.ahmet.smartbigburger.base
+package com.yenen.ahmet.smartbigburger.base.viewmodel
 
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 
-open class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
     private var dataViewBinding: ViewDataBinding? = null
 
 
-    protected fun setViewDataBinding(viewBinding: ViewDataBinding) {
+    fun setViewDataBinding(viewBinding: ViewDataBinding) {
         dataViewBinding = viewBinding
     }
 

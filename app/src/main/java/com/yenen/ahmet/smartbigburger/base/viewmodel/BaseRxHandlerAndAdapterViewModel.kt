@@ -1,4 +1,4 @@
-package com.yenen.ahmet.smartbigburger.base
+package com.yenen.ahmet.smartbigburger.base.viewmodel
 
 import com.yenen.ahmet.smartbigburger.recyclerviewhelper.BaseRecyclerViewAdapter
 
@@ -8,29 +8,21 @@ import com.yenen.ahmet.smartbigburger.recyclerviewhelper.BaseRecyclerViewAdapter
 // A ->  Adapter
 abstract class BaseRxHandlerAndAdapterViewModel<T,M, A : BaseRecyclerViewAdapter<M,*>>
 constructor(
-    noDataFoundText: String,
-    adapter: A
-) :
-    BaseFullRxSingleHandlerViewModel<T>(noDataFoundText) {
-
-
     private val adapter: A
-
-    init {
-        this.adapter = adapter
-    }
-
+) :
+    BaseFullRxSingleHandlerViewModel<T>() {
 
     fun setItemsAdapter(items: List<M>) {
-        adapter.setItems(items)
+        if(!items.isEmpty()){
+            adapter.setItems(items)
+        }else{
+            noDataFound.value = getNoDataFoundText()
+        }
+
     }
 
     fun getAdapter(): A {
         return adapter
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        adapter.clearItems()
-    }
 }

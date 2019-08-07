@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yenen.ahmet.smartbigburger.adapter.ProductsAdapter
-import com.yenen.ahmet.smartbigburger.base.BaseRxSingleHandlerViewModel
+import com.yenen.ahmet.smartbigburger.base.viewmodel.BaseRxSingleHandlerViewModel
 import com.yenen.ahmet.smartbigburger.databinding.ActivityMainBinding
 import com.yenen.ahmet.smartbigburger.model.ProductModel
 import com.yenen.ahmet.smartbigburger.remote.ApiClient

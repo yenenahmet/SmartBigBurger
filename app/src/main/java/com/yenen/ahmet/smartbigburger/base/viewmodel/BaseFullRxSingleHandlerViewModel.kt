@@ -1,4 +1,4 @@
-package com.yenen.ahmet.smartbigburger.base
+package com.yenen.ahmet.smartbigburger.base.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,14 +8,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-abstract class BaseFullRxSingleHandlerViewModel<T> constructor(val noDataFoundText: String) : BaseViewModel() {
+abstract class BaseFullRxSingleHandlerViewModel<T> : BaseViewModel() {
 
     private val disposable = CompositeDisposable()
     private var resultsLiveData: MutableLiveData<T>? = null
 
     val errMessage = MutableLiveData<String>()
     val noDataFound = MutableLiveData<String>()
-
 
     fun getData(): LiveData<T> {
         if (resultsLiveData == null) {
@@ -25,11 +24,17 @@ abstract class BaseFullRxSingleHandlerViewModel<T> constructor(val noDataFoundTe
         return resultsLiveData as LiveData<T>
     }
 
+    fun dataChangeable() {
+        runObservable(getServiceObservable())
+    }
+
     protected fun getResultsValue():T?{
         return resultsLiveData?.value
     }
 
     protected abstract fun getServiceObservable(): Observable<T>
+
+    protected abstract fun getNoDataFoundText():String
 
     // Private Fun //
     private fun runObservable(observable: Observable<T>) {
@@ -46,13 +51,13 @@ abstract class BaseFullRxSingleHandlerViewModel<T> constructor(val noDataFoundTe
                 if (!results.isEmpty()) {
                     resultsLiveData?.value = results
                 } else {
-                    noDataFound.value = noDataFoundText
+                    noDataFound.value = getNoDataFoundText()
                 }
             } else {
                 resultsLiveData?.value = results
             }
         } else {
-            noDataFound.value = noDataFoundText
+            noDataFound.value = getNoDataFoundText()
         }
     }
 

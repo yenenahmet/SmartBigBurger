@@ -1,4 +1,4 @@
-package com.yenen.ahmet.smartbigburger.base
+package com.yenen.ahmet.smartbigburger.base.viewmodel
 
 
 import io.reactivex.Observable

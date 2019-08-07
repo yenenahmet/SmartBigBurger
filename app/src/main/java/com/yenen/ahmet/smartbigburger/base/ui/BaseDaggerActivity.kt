@@ -1,36 +1,41 @@
-package com.yenen.ahmet.smartbigburger.base
+package com.yenen.ahmet.smartbigburger.base.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.yenen.ahmet.smartbigburger.base.viewmodel.BaseViewModel
 import com.yenen.ahmet.smartbigburger.factory.AppViewModelFactory
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(viewModelClass: Class<VM>) :
-    AppCompatActivity() {
+abstract class BaseDaggerActivity<VM : BaseViewModel, DB : ViewDataBinding>(
+    val viewModelClass: Class<VM>
+) : DaggerAppCompatActivity() {
+
+    @Inject
+    lateinit var factory: AppViewModelFactory
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
+
 
     protected val binding by lazy {
         DataBindingUtil.setContentView(this, getLayoutRes()) as DB
     }
 
     protected val viewModel by lazy {
-        val viewModelFactory:AppViewModelFactory? = getFactory()
-        if (viewModelFactory !=null) {
-            ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
-        } else {
-            ViewModelProviders.of(this).get(viewModelClass)
-        }
+        ViewModelProviders.of(this, factory).get(viewModelClass)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.setViewDataBinding(binding)
         initViewModel(viewModel)
     }
 
@@ -40,9 +45,5 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(viewModelClass
      */
     abstract fun initViewModel(viewModel: VM)
 
-    /*
-     Activity Use dependency injection or Not
-     injection
-    */
-    abstract fun getFactory(): AppViewModelFactory?
+
 }

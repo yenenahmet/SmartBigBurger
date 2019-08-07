@@ -3,12 +3,12 @@ package com.yenen.ahmet.smartbigburger.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yenen.ahmet.smartbigburger.adapter.ProductSummaryAdapter
-import com.yenen.ahmet.smartbigburger.base.BaseViewModel
+import com.yenen.ahmet.smartbigburger.base.viewmodel.BaseViewModel
 import com.yenen.ahmet.smartbigburger.databinding.ActivityProductSummaryBinding
 import com.yenen.ahmet.smartbigburger.model.ProductModel
 import com.yenen.ahmet.smartbigburger.view.ProductSummaryActivity
 
-class ProductSummaryViewModel :BaseViewModel(){
+class ProductSummaryViewModel : BaseViewModel(){
 
     private lateinit var adapter :ProductSummaryAdapter
     private var items: MutableLiveData<List<ProductModel>>? = null
